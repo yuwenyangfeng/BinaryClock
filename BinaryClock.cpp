@@ -6,32 +6,33 @@ void BinaryClock_Port()
 {
 	for (int i = 0; i <= 15; ++i)
 	{
-		pinMode(i, OUTPUT);
+		pinMode(i, OUTPUT); // LEDs
 	}
-	pinMode(SET, INPUT_PULLUP);
-	pinMode(ADD, INPUT_PULLUP);
+	pinMode(SET, INPUT_PULLUP); // Set Button pull-up
+	pinMode(ADD, INPUT_PULLUP); // Add Button pull-up
 }
 
 // method
-void BinaryClock_Set()
+void BinaryClock_Set() // set time as you want
 {
 	if ((digitalRead(SET) == LOW))
 	{
-		BinaryClock_Seconds(0); // turn off Seconds' display
-		bool _flag = false;
+		BinaryClock_Seconds(0); // turn off Seconds' display-dropped in set mode
+		bool _flag = false; // --tag
 		int _hr = hour();
 		int _min = minute();
 		do
 		{
-			BinaryClock_Hour(_hr);
+			BinaryClock_Hour(_hr); // display hour-in set mode
 			if (digitalRead(ADD) == LOW)
+			// add button be trigger
 			{
-				_flag = true;
+				_flag = true; // --overturn tag
 				if (_hr < 11)
 					_hr = _hr + 1;
 				else
 					_hr = 0;
-				delay(300);
+				delay(300); // Elimination Buffeting of Keystroke
 			}
 			if ((digitalRead(SET)) == LOW && (_flag == true))
 				break;

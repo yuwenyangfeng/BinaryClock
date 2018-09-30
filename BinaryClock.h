@@ -14,7 +14,7 @@ enum PIN
 // initial ports pinmode output
 void BinaryClock_Port();
 // method
-void BinaryClock_Set();//SET TIME as you need
+void BinaryClock_Set(); // SET TIME as you need
 void BinaryClock_Hour(int Hr);
 void BinaryClock_Minute(int Min);
 void BinaryClock_Seconds(int Sec);
