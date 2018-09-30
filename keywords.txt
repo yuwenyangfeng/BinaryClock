@@ -1,0 +1,37 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+
+######################################
+# Constants (LITERAL1)
+#######################################
+H8	LITERAL1
+H4	LITERAL1
+H2	LITERAL1
+H1	LITERAL1
+
+M32	LITERAL1
+M16	LITERAL1
+M8	LITERAL1
+M4	LITERAL1
+M2	LITERAL1
+M1	LITERAL1
+
+S32	LITERAL1
+S16	LITERAL1
+S8	LITERAL1
+S4	LITERAL1
+S2	LITERAL1
+S1	LITERAL1
+#
