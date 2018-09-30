@@ -17,7 +17,7 @@ void BinaryClock_Set()
 {
 	if ((digitalRead(SET) == LOW))
 	{
-		BinaryClock_Seconds(0);//turn off Seconds' display
+		BinaryClock_Seconds(0); // turn off Seconds' display
 		bool _flag = false;
 		int _hr = hour();
 		int _min = minute();
@@ -55,7 +55,7 @@ void BinaryClock_Set()
 		}
 		while (1);
 		setTime(_hr, _min, 0, 12, 12, 2012);
-		delay(1000);//must be existed, this delay forbit back to head line 
+		delay(1000); // must be existed, this delay forbit back to head line
 	}
 }
 

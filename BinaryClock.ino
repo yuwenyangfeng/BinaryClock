@@ -9,9 +9,8 @@ void setup()
 
 void loop()
 {
-    BinaryClock_Set();
+	BinaryClock_Set();
 	BinaryClock_Hour(hour());
 	BinaryClock_Minute(minute());
 	BinaryClock_Seconds(second());
 }
-
