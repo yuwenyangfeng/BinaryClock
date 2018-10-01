@@ -18,7 +18,7 @@ void BinaryClock_Set() // set time as you want
 	if ((digitalRead(SET) == LOW))
 	{
 		BinaryClock_Seconds(0); // turn off Seconds' display-dropped in set mode
-		bool _flag = false; // --tag
+		bool _flag = false; // --tag forbid jump out SET MODE
 		int _hr = hour();
 		int _min = minute();
 		do
@@ -27,7 +27,7 @@ void BinaryClock_Set() // set time as you want
 			if (digitalRead(ADD) == LOW)
 			// add button be trigger
 			{
-				_flag = true; // --overturn tag
+				_flag = true; // --overturn tag, can jumpout SET MODE
 				if (_hr < 11)
 					_hr = _hr + 1;
 				else
@@ -35,10 +35,11 @@ void BinaryClock_Set() // set time as you want
 				delay(300); // Elimination Buffeting of Keystroke
 			}
 			if ((digitalRead(SET)) == LOW && (_flag == true))
-				break;
+			// when Set Button is LOW && '_flag' tag is TRUE status,can jump out SET MODE
+			break; // break out 'do...while'
 		}
 		while (1);
-		_flag = false;
+		_flag = false; //
 		do
 		{
 			BinaryClock_Minute(_min);
@@ -64,11 +65,14 @@ void BinaryClock_Set() // set time as you want
 void BinaryClock_Hour(int Hr)
 {
 	int _hr = Hr;
-	int _port = H8;
+	int _port = H8;//_port was Macro define in BinaryClock Lib
 	int _bit = 3;
+	// decimal is composed by binary,the method is bit opration
+	// octal-'10' transfer binary-'1010'
 	while (_bit >= 0)
 	{
 		if ((_hr >> _bit) & 1)
+			//while number move right ?bit & 1 is TRUE LED light
 		{
 			digitalWrite(_port, HIGH);
 		}
