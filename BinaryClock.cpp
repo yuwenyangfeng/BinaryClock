@@ -12,7 +12,7 @@ void BinaryClock_Port()
 	pinMode(ADD, INPUT_PULLUP); // Add Button pull-up
 }
 
-// method
+// method:SET TIME
 void BinaryClock_Set() // set time as you want
 {
 	if ((digitalRead(SET) == LOW))
@@ -61,18 +61,18 @@ void BinaryClock_Set() // set time as you want
 	}
 }
 
-// /////////////////////////////////////
+//method: octal is binary too on pc, use bit-move opration.
 void BinaryClock_Hour(int Hr)
 {
 	int _hr = Hr;
-	int _port = H8;//_port was Macro define in BinaryClock Lib
+	int _port = H8; // 'H8' was Macro define in BinaryClock.h
 	int _bit = 3;
 	// decimal is composed by binary,the method is bit opration
 	// octal-'10' transfer binary-'1010'
 	while (_bit >= 0)
 	{
 		if ((_hr >> _bit) & 1)
-			//while number move right ?bit & 1 is TRUE LED light
+		// while number move right ?bit & 1 is TRUE LED light
 		{
 			digitalWrite(_port, HIGH);
 		}
@@ -89,8 +89,8 @@ void BinaryClock_Hour(int Hr)
 void BinaryClock_Minute(int Min)
 {
 	int _min = Min;
-	int _port = M32;
-	int _bit = 5;
+	int _port = M32; // 'M32' was Macro define in BinaryClock.h
+	int _bit = 5; // be used for bit move, there are 6 leds display minute.
 	while (_bit >= 0)
 	{
 		if ((_min >> _bit) & 1)
