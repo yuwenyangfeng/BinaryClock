@@ -15,7 +15,7 @@ void BinaryClock_Port()
 // method:SET TIME
 void BinaryClock_Set() // set time as you want
 {
-	if ((digitalRead(SET) == LOW))
+	if (digitalRead(SET) == LOW)
 	{
 		BinaryClock_Seconds(0); // turn off Seconds' display-dropped in set mode
 		bool _flag = false; // --tag forbid jump out SET MODE
@@ -57,7 +57,7 @@ void BinaryClock_Set() // set time as you want
 		}
 		while (1);
 		setTime(_hr, _min, 0, 12, 12, 2012);
-		delay(1000); // must be existed, this delay forbit back to head line
+		delay(1000); // !!!must be existed, this delay forbit back to head line
 	}
 }
 
