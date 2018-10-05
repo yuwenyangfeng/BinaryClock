@@ -57,11 +57,11 @@ void BinaryClock_Set() // set time as you want
 		}
 		while (1);
 		setTime(_hr, _min, 0, 12, 12, 2012);
-		delay(1000); // !!!must be existed, this delay forbit back to head line
+		while (digitalRead(SET) == LOW); // when button push unback,creat a sustain LOW level, main programe will drop in next circle.so,if button un srping-back,stay in this sentence.
 	}
 }
 
-//method: octal is binary too on pc, use bit-move opration.
+// method: octal is binary too on pc, use bit-move opration.
 void BinaryClock_Hour(int Hr)
 {
 	int _hr = Hr;
