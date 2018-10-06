@@ -56,7 +56,7 @@ void BinaryClock_Set() // set time as you want
 				break;
 		}
 		while (1);
-		setTime(_hr, _min, 0, 12, 12, 2012);
+		setTime(_hr, _min, 0, 12, 12, 2012); 
 		while (digitalRead(SET) == LOW); // when button push unback,creat a sustain LOW level, main programe will drop in next circle.so,if button un srping-back,stay in this sentence.
 	}
 }
