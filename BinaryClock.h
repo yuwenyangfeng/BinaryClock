@@ -15,7 +15,7 @@ enum PIN
 void BinaryClock_Port();
 // method
 void BinaryClock_Set(); // SET TIME as you need
-void BinaryClock_Hour(int Hr);//receive hour-value from Time.h, Display binary on leds.
-void BinaryClock_Minute(int Min);//receive minute-value from Time.h, Display binary on leds.
-void BinaryClock_Seconds(int Sec);//receive seconds-value from Time.h, Display binary on leds.
+void BinaryClock_Hour(int Hr); // receive hour-value from Time.h, Display binary on leds.
+void BinaryClock_Minute(int Min); // receive minute-value from Time.h, Display binary on leds.
+void BinaryClock_Seconds(int Sec); // receive seconds-value from Time.h, Display binary on leds.
 #endif
