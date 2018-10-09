@@ -17,7 +17,8 @@ void BinaryClock_Set() // set time as you want
 {
 	int _hr = hour();
 	int _minute = minute();
-	unsigned long previous = millis() - 500;
+	unsigned int debounce = 300;
+	unsigned long int previous = millis() - debounce;
 	if (digitalRead(SET) == LOW)
 	{
 		while (digitalRead(SET) == LOW); // eliminate dithering, cancel it when proteus VSM debug
@@ -25,7 +26,7 @@ void BinaryClock_Set() // set time as you want
 		{
 			BinaryClock_Hour(_hr); // display hour-in set mode
 			BinaryClock_Seconds(0);
-			while ((digitalRead(ADD) == LOW) && ((millis() - previous) > 500))
+			while ((digitalRead(ADD) == LOW) && ((millis() - previous) > debounce))
 			{
 				if (_hr < 11)
 				{
@@ -48,7 +49,7 @@ void BinaryClock_Set() // set time as you want
 		{
 			BinaryClock_Minute(_minute);
 			BinaryClock_Seconds(0);
-			while ((digitalRead(ADD) == LOW) && ((millis() - previous) > 500))
+			while ((digitalRead(ADD) == LOW) && ((millis() - previous) > debounce))
 			{
 				if (_minute < 59)
 				{
