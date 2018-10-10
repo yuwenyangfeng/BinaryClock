@@ -15,18 +15,23 @@ void BinaryClock_Port()
 // method:SET TIME
 void BinaryClock_Set() // set time as you want
 {
+	// declare variables
 	int _hr = hour();
 	int _minute = minute();
-	unsigned int debounce = 300;
+	unsigned int debounce = 300; // set debounce time
 	unsigned long int previous = millis() - debounce;
+	// judge set-button triger
 	if (digitalRead(SET) == LOW)
+	// must be 'if' not 'while'
 	{
-		while (digitalRead(SET) == LOW); // eliminate dithering, cancel it when proteus VSM debug
+		while (digitalRead(SET) == LOW); // eliminate dithering on real, cancel it when proteus VSM debug
+		// go in setup mode:
+		BinaryClock_Seconds(0); // turn off seconds display
 		do
 		{
 			BinaryClock_Hour(_hr); // display hour-in set mode
-			BinaryClock_Seconds(0);
 			while ((digitalRead(ADD) == LOW) && ((millis() - previous) > debounce))
+			// compare debounce need the same type is int.
 			{
 				if (_hr < 11)
 				{
@@ -45,10 +50,10 @@ void BinaryClock_Set() // set time as you want
 	if (digitalRead(SET) == LOW)
 	{
 		while (digitalRead(SET) == LOW);
+		BinaryClock_Seconds(0); // turn off seconds display
 		do
 		{
 			BinaryClock_Minute(_minute);
-			BinaryClock_Seconds(0);
 			while ((digitalRead(ADD) == LOW) && ((millis() - previous) > debounce))
 			{
 				if (_minute < 59)
