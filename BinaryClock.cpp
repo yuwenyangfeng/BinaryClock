@@ -20,9 +20,8 @@ void BinaryClock_Set() // set time as you want
 	int _minute = minute();
 	unsigned int debounce = 300; // set debounce time
 	unsigned long int previous = millis() - debounce;
-	// judge set-button triger
+	// judge set-button triger// must be 'if' not 'while'
 	if (digitalRead(SET) == LOW)
-	// must be 'if' not 'while'
 	{
 		while (digitalRead(SET) == LOW); // eliminate dithering on real, cancel it when proteus VSM debug
 		// go in setup mode:
@@ -36,20 +35,21 @@ void BinaryClock_Set() // set time as you want
 				if (_hr < 11)
 				{
 					_hr = _hr + 1;
-					previous = millis();
+					previous = millis(); // refresh previous vairable
 				}
 				else
 				{
 					_hr = 0;
-					previous = millis();
+					previous = millis(); // refresh previous vairable
 				}
 			}
 		}
 		while (digitalRead(SET) == HIGH); // when set is HIGH, cycle in do...while
 	}
+	// must be 'if' not 'while'
 	if (digitalRead(SET) == LOW)
 	{
-		while (digitalRead(SET) == LOW);
+		while (digitalRead(SET) == LOW); // eliminate dithering on real, cancel it when proteus VSM debug
 		BinaryClock_Seconds(0); // turn off seconds display
 		do
 		{
@@ -69,7 +69,7 @@ void BinaryClock_Set() // set time as you want
 			}
 		}
 		while (digitalRead(SET) == HIGH); // when set is HIGH, cycle in do...while
-		setTime(_hr, _minute, 0, 12, 12, 2012);
+		setTime(_hr, _minute, 0, 12, 12, 2012); // must be stay in do while ,else no display, will be drop in this line directly,when set-button unpushed.
 	}
 	while (digitalRead(SET) == LOW); // eliminate dithering, cancel it when proteus VSM debug
 }
