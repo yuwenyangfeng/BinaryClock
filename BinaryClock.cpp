@@ -32,14 +32,14 @@ void BinaryClock_Set() // set time as you want
 			while ((digitalRead(ADD) == LOW) && ((millis() - previous) > debounce))
 			// compare debounce need the same type is int.
 			{
-				if (_hr < 11)
+				if (_hr < 12)
 				{
 					_hr = _hr + 1;
 					previous = millis(); // refresh previous vairable
 				}
 				else
 				{
-					_hr = 0;
+					_hr = 1;
 					previous = millis(); // refresh previous vairable
 				}
 			}
@@ -54,16 +54,17 @@ void BinaryClock_Set() // set time as you want
 		do
 		{
 			BinaryClock_Minute(_minute);
+			debounce=200;
 			while ((digitalRead(ADD) == LOW) && ((millis() - previous) > debounce))
 			{
-				if (_minute < 59)
+				if (_minute < 60)
 				{
 					_minute = _minute + 1;
 					previous = millis();
 				}
 				else
 				{
-					_minute = 0;
+					_minute = 1;
 					previous = millis();
 				}
 			}
