@@ -1,2 +1,17 @@
 #GITHUB SUGGEST WIRTER NOTE README.
 #This project is a binary clock by Arduino.
+Use ATmega8 replace ATmega328PU:
+1.Open Arduino IDE install MiniCore reference https://github.com/MCUdude/MiniCore
+2.Use Tow Arduino UNo boards;
+3.First of all flash download "Arduino as ISP";
+4.The other Arduino UNO Board plug ATmega8;
+5.Pin Option: Master Board(Arduino as ISP) Pin ====== ATmega8 Board
+                                           10  ------ reset
+					   11  ------ 11
+					   12  ------ 12
+					   13  ------ 13
+			               vcc(5V) ------ vcc(5V)
+				           GND ------ GND
+6.Use default 'BOD' 'LTO';
+7.Burn Boot Loader;
+8.Can use it as arduino UNO, But 'tools' -> 'Boards Manager' choice ATmega-8 not ATmega UNO.
